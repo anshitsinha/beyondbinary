@@ -40,7 +40,20 @@ export function getPrivacyPolicy() {
 }
 
 export function formatDate(date: string, includeRelative = false) {
+  if (!date) {
+    console.error("Invalid date value:", date);
+    throw new Error("Invalid date value provided.");
+  }
+
+  // Check if date is a valid string
+  if (typeof date !== 'string') {
+    console.error("Expected a string for 'date', but got:", typeof date, date);
+    throw new Error("The 'date' parameter must be a string.");
+  }
+
   let currentDate = new Date();
+
+  // Check if 'date' includes 'T', and if not, format it properly
   if (!date.includes("T")) {
     date = `${date}T00:00:00`;
   }
