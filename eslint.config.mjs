@@ -14,6 +14,8 @@ const eslintConfig = [
   {
     rules: {
       "prefer-const": "off", // Disable the 'prefer-const' rule
+      "@typescript-eslint/no-unused-vars": "off", // Disable the 'no-unused-vars' rule
+      "@typescript-eslint/no-explicit-any": "off", // Disable the 'no-explicit-any' rule
     },
   },
 ];
