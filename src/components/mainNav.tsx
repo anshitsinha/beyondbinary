@@ -12,6 +12,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { ModeToggle } from "./ui/modeToggle";
 
 const posts: { title: string; href: string; description: string }[] = [
   {
@@ -119,7 +120,7 @@ export function MainNav({ className }: { className?: string }) {
           </NavigationMenuItem>
 
           <div className="flex items-center justify-between w-20">
-            {/* <ModeToggle /> */}
+            <ModeToggle />
           </div>
         </NavigationMenuList>
       </NavigationMenu>
