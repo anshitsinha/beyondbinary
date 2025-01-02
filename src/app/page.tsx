@@ -1,8 +1,15 @@
 import LatestPosts from "@/components/home/latestPosts";
-
+import { MainNav } from "@/components/mainNav";
 
 export default function Home() {
-  return <>
-  <LatestPosts/>
-  </>;
+  return (
+    <>
+      <MainNav />
+      <main>
+        <div>
+          <LatestPosts />
+        </div>
+      </main>
+    </>
+  );
 }
