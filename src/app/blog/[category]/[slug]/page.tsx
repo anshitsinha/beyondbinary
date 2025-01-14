@@ -1,7 +1,7 @@
- import { notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import { formatDate, getBlogPosts } from "../../utils";
 import Header from "@/components/Header";
-import Container from "@/components/Container";
+import Container from "@/components/container";
 import { BreadcrumbWithCustomSeparator } from "@/components/Breadcrumb";
 import { CustomMDX } from "@/components/mdx";
 import ReportViews from "@/components/ReportViews";
@@ -56,12 +56,12 @@ export function generateMetadata({
   };
 }
 
- export default function Page({
-   params,
- }: {
-   params: { category: string; slug: string };
- }) {
-   let post = getBlogPosts().find((post) => post.slug === params.slug);
+export default function Page({
+  params,
+}: {
+  params: { category: string; slug: string };
+}) {
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();

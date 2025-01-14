@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getBlogPosts } from "../utils";
 import Link from "next/link";
-import Container from "@/components/Container";
+import Container from "@/components/container";
 
 import CategoryCard from "@/components/categoryCard";
 // import Header from "@/components/Header";
@@ -14,7 +14,7 @@ export default function Page({ params }: { params: { category: string } }) {
   if (!posts) {
     notFound();
   }
-  
+
   return (
     <>
       <Container>
@@ -34,13 +34,12 @@ export default function Page({ params }: { params: { category: string } }) {
                 href={`/blog/${post.metadata.category}/${post.slug}`}
                 key={post.slug}
               >
-                
                 <CategoryCard
-                title={post.metadata.title}
-                summary={post.metadata.summary}
-                date={post.metadata.publishedAt}
-                key = {post.slug}
-              />
+                  title={post.metadata.title}
+                  summary={post.metadata.summary}
+                  date={post.metadata.publishedAt}
+                  key={post.slug}
+                />
               </Link>
             ))}
         </div>

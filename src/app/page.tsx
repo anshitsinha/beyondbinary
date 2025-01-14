@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/container";
 import LatestPosts from "@/components/home/latestPosts";
 import PopularPosts from "@/components/home/popularPosts";
 // import PopularPosts from "@/components/home/popular-posts";
