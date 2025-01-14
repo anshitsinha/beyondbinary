@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
-// import { promises as dns } from "dns";
+import { promises as dns } from "dns";
 import matter from "gray-matter";
-// // get all the mdx files from the dir
+// get all the mdx files from the dir
 function getMDXFiles(dir: string) {
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
@@ -40,20 +40,7 @@ export function getPrivacyPolicy() {
 }
 
 export function formatDate(date: string, includeRelative = false) {
-  if (!date) {
-    console.error("Invalid date value:", date);
-    throw new Error("Invalid date value provided.");
-  }
-
-  // Check if date is a valid string
-  if (typeof date !== 'string') {
-    console.error("Expected a string for 'date', but got:", typeof date, date);
-    throw new Error("The 'date' parameter must be a string.");
-  }
-
   let currentDate = new Date();
-
-  // Check if 'date' includes 'T', and if not, format it properly
   if (!date.includes("T")) {
     date = `${date}T00:00:00`;
   }
@@ -89,3 +76,29 @@ export function formatDate(date: string, includeRelative = false) {
   return `${fullDate} (${formattedDate})`;
 }
 
+export async function validateEmailAddress(emailAddress: string) {
+  const invalidDomains = [
+    "tempmail.com",
+    "example.com",
+    "email.com",
+    "eamil.com",
+    "test.com",
+  ];
+  const [user, domain] = emailAddress.split("@");
+
+  // Example custom logic: Ensure domain exists and isn't blacklisted
+  if (invalidDomains.includes(domain)) {
+    return false; // Invalid if domain is blacklisted
+  }
+
+  try {
+    const mxRecords = await dns.resolveMx(domain);
+
+    if (!mxRecords || mxRecords.length === 0) {
+      return false;
+    }
+    return true;
+  } catch (error: any) {
+    console.error(error.code);
+  }
+}

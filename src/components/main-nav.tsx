@@ -15,9 +15,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Icons } from "./icons";
-
+import { ModeToggle } from "./ui/mode-toggle";
 import { POSTS } from "@/lib/constants";
-import { ModeToggle } from "./ui/modeToggle";
 
 export function MainNav({ className }: { className?: string }) {
   return (

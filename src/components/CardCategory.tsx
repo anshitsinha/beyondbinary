@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "./ui/card";
 
-export default function CategoryCard({
+export default function CardCategory({
   title,
   summary,
   date,
@@ -16,11 +16,9 @@ export default function CategoryCard({
   summary: string;
   date: string;
 }) {
-  
   return (
     <Card className="w-[350px] h-[290px] shadow-lg">
       <CardHeader>
-        {/* Log statement should not be inside JSX */}
         <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent>

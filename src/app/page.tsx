@@ -1,9 +1,8 @@
-import Container from "@/components/container";
-import LatestPosts from "@/components/home/latestPosts";
-import PopularPosts from "@/components/home/popularPosts";
-// import PopularPosts from "@/components/home/popular-posts";
-import TopCatogories from "@/components/home/topCategories";
-import { MainNav } from "@/components/mainNav";
+import Container from "@/components/Container";
+import LatestPosts from "@/components/home/latest-posts";
+import PopularPosts from "@/components/home/popular-posts";
+import TopCatogories from "@/components/home/top-categories";
+import { MainNav } from "@/components/main-nav";
 
 export default function Home() {
   return (
@@ -20,7 +19,7 @@ export default function Home() {
           </div>
           <div className="mt-10 sticky top-0">
             <h1 className="font-bold mb-4">POPULAR POSTS</h1>
-            <PopularPosts/>
+            <PopularPosts />
           </div>
         </div>
       </main>

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { formatDate, getBlogPosts } from "../../utils";
 import Header from "@/components/Header";
-import Container from "@/components/container";
+import Container from "@/components/Container";
 import { BreadcrumbWithCustomSeparator } from "@/components/Breadcrumb";
 import { CustomMDX } from "@/components/mdx";
 import ReportViews from "@/components/ReportViews";
@@ -13,48 +13,48 @@ export async function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }));
-}4
+}
 
-// export function generateMetadata({
-//   params,
-// }: {
-//   params: { slug: string; category: string };
-// }) {
-//   let post = getBlogPosts().find((post) => post.slug === params.slug);
-//   if (!post) {
-//     return;
-//   }
+export function generateMetadata({
+  params,
+}: {
+  params: { slug: string; category: string };
+}) {
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  if (!post) {
+    return;
+  }
 
-//   let {
-//     title,
-//     publishedAt: publishedTime,
-//     summary: description,
-//     image,
-//   } = post.metadata;
+  let {
+    title,
+    publishedAt: publishedTime,
+    summary: description,
+    image,
+  } = post.metadata;
 
-//   let ogImage = image
-//     ? image
-//     : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
+  let ogImage = image
+    ? image
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
-//   return {
-//     title,
-//     description,
-//     openGraph: {
-//       title,
-//       description,
-//       type: "article",
-//       publishedTime,
-//       url: `${baseUrl}/blog/${post?.metadata.category}/${post?.slug}}`,
-//       images: [{ url: ogImage }],
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title,
-//       description,
-//       images: [ogImage],
-//     },
-//   };
-// }
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime,
+      url: `${baseUrl}/blog/${post?.metadata.category}/${post?.slug}}`,
+      images: [{ url: ogImage }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+  };
+}
 
 export default function Page({
   params,
