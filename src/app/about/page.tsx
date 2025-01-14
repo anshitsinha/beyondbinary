@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/container";
 import Header from "@/components/Header";
 import { MainNav } from "@/components/main-nav";
 import { Metadata } from "next";

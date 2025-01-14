@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { formatDate, getBlogPosts } from "../../utils";
 import Header from "@/components/Header";
-import Container from "@/components/Container";
+import Container from "@/components/container";
 import { BreadcrumbWithCustomSeparator } from "@/components/Breadcrumb";
 import { CustomMDX } from "@/components/mdx";
 import ReportViews from "@/components/ReportViews";

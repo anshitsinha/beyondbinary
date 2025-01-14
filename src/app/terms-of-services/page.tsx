@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/container";
 import { getTermsOfServices } from "../blog/utils";
 import { MainNav } from "@/components/main-nav";
 import { CustomMDX } from "@/components/mdx";
