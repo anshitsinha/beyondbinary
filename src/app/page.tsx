@@ -6,13 +6,14 @@ import { MainNav } from "@/components/main-nav";
 
 export default function Home() {
   return (
-    <Container>
+    <div className="bg-gray-100 dark:bg-gray-800">
+      <Container className="bg-background">
       <MainNav />
       <main className="flex flex-col items-start justify-evenly mt-16 md:flex-row">
-        <div>
+        <div className="pr-1">
           <LatestPosts />
         </div>
-        <div className="h-screen">
+        <div className="h-screen pl-1">
           <div>
             <h1 className="font-bold mb-4">TOP CATEGORIES</h1>
             <TopCatogories />
@@ -23,6 +24,8 @@ export default function Home() {
           </div>
         </div>
       </main>
-    </Container>
+    </Container> 
+    </div>
+   
   );
 }
