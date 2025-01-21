@@ -55,7 +55,6 @@ export function generateMetadata({
     },
   };
 }
-
 export default function Page({
   params,
 }: {
@@ -70,31 +69,24 @@ export default function Page({
   return (
     <>
       <script
-        type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/blog/${post.metadata.category}/${post.slug}`,
-            author: {
-              "@type": "Person",
-              name: "Coding Jitsu Blog",
-            },
-          }),
+          __html: `
+            document.addEventListener("DOMContentLoaded", function () {
+              const bigTitle = document.querySelector(".big-title");
+              const stickyTitle = document.querySelector(".sticky-title");
+
+              window.addEventListener("scroll", function () {
+                const bigTitleRect = bigTitle.getBoundingClientRect();
+                if (bigTitleRect.bottom < 0) {
+                  stickyTitle.style.display = "block";
+                } else {
+                  stickyTitle.style.display = "none";
+                }
+              });
+            });
+          `,
         }}
-      />
-      <ReportViews
-        category={post.metadata.category}
-        title={post.metadata.title}
-        slug={post.slug}
       />
       <Header>
         <Container>
@@ -102,7 +94,7 @@ export default function Page({
             category={post.metadata.category}
             slug={post.slug}
           />
-          <h1 className="title font-semibold text-2xl tracking-tighter mt-4">
+          <h1 className="big-title font-semibold text-9xl tracking-tighter mt-4">
             {post.metadata.title}
           </h1>
           <div className="flex justify-between items-center mt-2 mb-4 text-sm">
@@ -112,8 +104,36 @@ export default function Page({
           </div>
         </Container>
       </Header>
-      <Container>
-        <article className="prose">
+      <Container className="grid grid-flow-col grid-cols-[2fr_5fr_2fr] gap-4">
+        <div className="sticky top-0 self-start">
+          {/* Hidden title that becomes visible on scroll */}
+          <h2 className="sticky-title font-semibold text-lg hidden">
+            {post.metadata.title}
+          </h2>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
+            Metadata Date: {formatDate(post.metadata.publishedAt)}
+          </p>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            Author: David Edoh-Bedi
+          </p>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            Reading time: 7 minutes
+          </p>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            Categories: Sandboxes
+          </p>
+          <div className="flex gap-2 mt-2">
+            <a href="#" className="text-blue-600 hover:underline">
+              Share: Twitter/X
+            </a>
+            <a href="#" className="text-blue-600 hover:underline">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        {/* Main content */}
+        <article className="prose text-xl">
           <CustomMDX source={post.content} />
         </article>
       </Container>

@@ -1,13 +1,21 @@
 import { formatDate, getBlogPosts } from "@/app/blog/utils";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
 export default function LatestPosts() {
   let latestPosts = getBlogPosts();
   return (
-    <>
-      <h1 className="inline-block font-heading text-4xl tracking-tight lg:text-5xl">
+    <div className="w-full">
+      {/* <h1 className="inline-block font-heading text-4xl tracking-tight lg:text-5xl">
         Recently Published
-      </h1>
+      </h1> */}
+
+      <div className="grid grid-flow-col grid-cols-[1fr_7fr_2fr] border-b border-black">
+        <div>/ Date</div>
+        <div>/ Name</div>
+        <div>/ Type</div>
+      </div>
+
       {latestPosts
         .sort((a, b) => {
           if (
@@ -18,27 +26,36 @@ export default function LatestPosts() {
           return 1;
         })
         .map((post) => (
-          <article key={post.slug} className="text-wrap max-w-md my-10">
-            <div className="flex">
-              {" "}
-              <div className="my-auto px-4 w-[300px]">
-                <img src={post.metadata.img} alt="" />
-              </div>
-              <div>
-                <Link href={`/blog/${post.metadata.category}/${post.slug}`}>
-                  <h3 className="font-semibold py-2 text-xl leading-5 hover:text-blue-400">
-                    {post.metadata.title}
-                  </h3>
-                </Link>
+          <article key={post.slug} className="border-b border-black">
+            <div className="grid grid-flow-col grid-cols-[1fr_7fr_2fr]  ">
+              <div>{post.metadata.publishedAt}</div>
 
-                <p className="leading-8 my-1">{post.metadata.summary}</p>
-                <p className="text-sm text-muted-foreground">
-                  {formatDate(post.metadata.publishedAt)}
-                </p>
-              </div>
+              <div> {post.metadata.title} </div>
+
+              <div> {post.metadata.category} </div>
             </div>
+
+            <div className="flex gap-8">
+              <div>Summary:</div>
+
+              <div>{post.metadata.summary}</div>
+            </div>
+
+            <div className="flex gap-8">
+              <div>Topic:</div>
+
+              <div className="border">{post.metadata.category}</div>
+            </div>
+
+            <Link href={`/blog/${post.metadata.category}/${post.slug}`}>
+
+            <div className="border rounded-full flex items-center justify-center border-primary hover:bg-primary hover:text-primary-foreground  text w-full mb-4">
+              Read
+            </div>
+
+            </Link>
           </article>
         ))}
-    </>
+    </div>
   );
 }

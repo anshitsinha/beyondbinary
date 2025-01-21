@@ -3,18 +3,18 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { POSTS } from "@/lib/constants";
 
-export default function TopCatogories() {
+export default function TopCategories() {
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid grid-cols-3 border ">
       {POSTS.map((post) => (
-        <Button
+        <div
           key={post.title}
-          variant={"secondary"}
-          className="hover:scale-110 transition-all"
-          asChild
+         
+          className="hover:bg-gray-100 p-2 border transition-all"
+         
         >
           <Link href={post.href}>{post.title}</Link>
-        </Button>
+        </div>
       ))}
     </div>
   );

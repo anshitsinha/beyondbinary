@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -32,7 +34,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --radius: 0rem;
 
     /* code highlight */
     --sh-class: #2d5e9d;
@@ -211,4 +213,34 @@ table {
 .blockquote > #note::before {
   content: "#";
   padding: 5px;
+}
+
+.glass {
+  backdrop-filter: blur(3px) saturate(180%);
+  -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  background-color: rgba(153, 153, 153, 0.179);
+ 
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Micro+5&display=swap');
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Micro+5&display=swap');
+
+
+.hero {
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+
+  
+}
+
+.binary {
+  font-family: "Micro 5", serif;
+  
 }
