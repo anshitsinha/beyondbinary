@@ -8,12 +8,12 @@ import Hero from "@/components/home/hero";
 
 export default function Home() {
   return (
-    <div className="bg-gray-100 dark:bg-gray-800">
-      <Container className="bg-background">
-        <MainNav className="fixed w-screen top-0 left-0" />
+    <>
+      <MainNav />
 
-        <main className=" mt-16 ">
-          <div>
+      <Container>
+        <main>
+          <div className="mt-4 mb-8">
             <Hero />
           </div>
           <div className="flex flex-col items-start justify-evenly md:flex-row">
@@ -33,6 +33,6 @@ export default function Home() {
           </div>
         </main>
       </Container>
-    </div>
+    </>
   );
 }

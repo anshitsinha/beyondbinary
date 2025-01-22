@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
-import { EB_Garamond } from "next/font/google";
+import { EB_Garamond, Instrument_Serif } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
 import { siteConfig } from "@/config/site";
 
+// Configure EB Garamond
 const ebGaramond = EB_Garamond({ subsets: ["latin"] });
+
+// Configure Instrument Serif with weight
+const instrumentSerif = Instrument_Serif({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: {
@@ -59,13 +63,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={ebGaramond.className}>
+      <body className={instrumentSerif.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+        
           <main className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>

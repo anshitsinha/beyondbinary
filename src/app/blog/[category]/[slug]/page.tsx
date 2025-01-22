@@ -6,6 +6,10 @@ import { BreadcrumbWithCustomSeparator } from "@/components/Breadcrumb";
 import { CustomMDX } from "@/components/mdx";
 import ReportViews from "@/components/ReportViews";
 import { baseUrl } from "@/app/sitemap";
+import { MainNav } from "@/components/main-nav";
+
+import { EB_Garamond, Instrument_Serif } from "next/font/google";
+const content = EB_Garamond({ subsets: ["latin"] });
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -67,7 +71,7 @@ export default function Page({
   }
 
   return (
-    <>
+    <div>
       <script
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
@@ -88,13 +92,17 @@ export default function Page({
           `,
         }}
       />
+      
+
+      
+
       <Header>
         <Container>
           <BreadcrumbWithCustomSeparator
             category={post.metadata.category}
             slug={post.slug}
           />
-          <h1 className="big-title font-semibold text-9xl tracking-tighter mt-4">
+          <h1 className="big-title text-9xl tracking-tighter mt-4">
             {post.metadata.title}
           </h1>
           <div className="flex justify-between items-center mt-2 mb-4 text-sm">
@@ -105,7 +113,7 @@ export default function Page({
         </Container>
       </Header>
       <Container className="grid grid-flow-col grid-cols-[2fr_5fr_2fr] gap-4">
-        <div className="sticky top-0 self-start">
+        <div className="sticky mt-8 top-16 self-start">
           {/* Hidden title that becomes visible on scroll */}
           <h2 className="sticky-title font-semibold text-lg hidden">
             {post.metadata.title}
@@ -133,10 +141,10 @@ export default function Page({
         </div>
 
         {/* Main content */}
-        <article className="prose text-xl">
+        <article className={`${content.className} prose text-xl`}>
           <CustomMDX source={post.content} />
         </article>
       </Container>
-    </>
+    </div>
   );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "@/components/container";
 import CardCategory from "@/components/CardCategory";
 import Header from "@/components/Header";
+import { MainNav } from "@/components/main-nav";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -32,6 +33,7 @@ export default function Page({ params }: { params: { category: string } }) {
   }
   return (
     <>
+    
       <Header>
         <Container>
           <h1 className="title font-semibold text-2xl tracking-wider mt-4 uppercase">
