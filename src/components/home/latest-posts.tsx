@@ -13,7 +13,9 @@ export default function LatestPosts() {
 
   return (
     <div className="w-full">
-      <div className={`${topic.className} grid grid-flow-col grid-cols-[1fr_7fr_2fr] border-b border-border`}>
+      <div
+        className={`${topic.className} grid grid-flow-col grid-cols-[1fr_7fr_2fr] border-b border-border`}
+      >
         <div>
           <span className="-mr-1">/</span> Date
         </div>
@@ -27,7 +29,9 @@ export default function LatestPosts() {
 
       {latestPosts
         .sort((a, b) => {
-          if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
+          if (
+            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
+          ) {
             return -1;
           }
           return 1;
@@ -52,7 +56,7 @@ export default function LatestPosts() {
             <div className="grid my-3 grid-flow-col grid-cols-[1fr_7fr_2fr]">
               <div>Topic:</div>
               <div className={`${topic.className} text-sm`}>
-                <div className="inline-block border px-2 py-1 ">
+                <div className="inline-block border px-2  ">
                   {post.metadata.category}
                 </div>
               </div>
