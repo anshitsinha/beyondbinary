@@ -4,14 +4,26 @@ import Header from "@/components/Header";
 import Container from "@/components/container";
 import { BreadcrumbWithCustomSeparator } from "@/components/Breadcrumb";
 import { CustomMDX } from "@/components/mdx";
-import ScrollBehavior from "@/components/ScrollBehavior"; // Import the client-side subcomponent
+import ReportViews from "@/components/ReportViews";
+import { baseUrl } from "@/app/sitemap";
+import { MainNav } from "@/components/main-nav";
 
+import { EB_Garamond, Instrument_Serif } from "next/font/google";
+const content = EB_Garamond({ subsets: ["latin"] });
+
+export async function generateStaticParams() {
+  let posts = getBlogPosts();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 export default function Page({
   params,
 }: {
   params: { category: string; slug: string };
 }) {
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
@@ -19,7 +31,34 @@ export default function Page({
 
   return (
     <div>
-      <ScrollBehavior /> {/* Add the client-side logic here */}
+      {/* Hydration-safe script */}
+      <script
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              function handleScroll() {
+                const bigTitle = document.querySelector(".big-title");
+                const stickyTitle = document.querySelector(".sticky-title");
+
+                if (!bigTitle || !stickyTitle) return;
+
+                const bigTitleRect = bigTitle.getBoundingClientRect();
+                if (bigTitleRect.bottom < 0) {
+                  stickyTitle.style.display = "block";
+                } else {
+                  stickyTitle.style.display = "none";
+                }
+              }
+
+              // Add the scroll event listener after a short delay
+              window.onload = function () {
+                window.addEventListener("scroll", handleScroll);
+              };
+            })();
+          `,
+        }}
+      />
       <Header>
         <Container>
           <BreadcrumbWithCustomSeparator
@@ -38,6 +77,7 @@ export default function Page({
       </Header>
       <Container className="grid grid-flow-col grid-cols-[2fr_5fr_2fr] gap-4">
         <div className="sticky mt-8 top-16 self-start">
+          {/* Hidden title that becomes visible on scroll */}
           <h2 className="sticky-title font-semibold text-lg hidden">
             {post.metadata.title}
           </h2>
@@ -63,7 +103,8 @@ export default function Page({
           </div>
         </div>
 
-        <article className="prose text-xl">
+        {/* Main content */}
+        <article className={`${content.className} prose text-xl`}>
           <CustomMDX source={post.content} />
         </article>
       </Container>
