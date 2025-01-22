@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 export default function ScrollBehavior() {
   useEffect(() => {
-    const bigTitle = document.querySelector(".big-title");
-    const stickyTitle = document.querySelector(".sticky-title");
+    const bigTitle = document.querySelector(".big-title") as HTMLElement | null;
+    const stickyTitle = document.querySelector(".sticky-title") as HTMLElement | null;
 
     if (!bigTitle || !stickyTitle) return;
 
