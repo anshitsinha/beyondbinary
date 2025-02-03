@@ -63,7 +63,7 @@ export default function LatestPosts() {
             </div>
 
             <Link href={`/blog/${post.metadata.category}/${post.slug}`}>
-              <div className="border rounded-full flex items-center justify-center border-border hover:bg-primary hover:text-primary-foreground text w-full mb-4">
+              <div className="border p-1 md:p-0 rounded-full flex items-center justify-center border-border hover:bg-primary hover:text-primary-foreground text w-full mb-4">
                 Read
               </div>
             </Link>
