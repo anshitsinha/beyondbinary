@@ -6,7 +6,7 @@ import { Xanh_Mono } from "next/font/google";
 
 const summary = EB_Garamond({ subsets: ["latin"] });
 const topic = Xanh_Mono({ subsets: ["latin"], weight: "400" });
-const instrumentSerif = Instrument_Serif({ subsets: ["latin"], weight: "400" });
+const title = Instrument_Serif({ subsets: ["latin"], weight: "400" });
 
 export default function LatestPosts() {
   let latestPosts = getBlogPosts();
@@ -14,7 +14,7 @@ export default function LatestPosts() {
   return (
     <div className="w-full">
       <div
-        className={`${topic.className} grid grid-flow-col grid-cols-[1fr_7fr_2fr] border-b border-border`}
+        className={`${topic.className} grid grid-flow-col grid-cols-[2fr_7fr_1.5fr] md:grid-cols-[1.5fr_7fr_1.5fr] text-sm md:text-md border-b border-border`}
       >
         <div>
           <span className="-mr-1">/</span> Date
@@ -37,27 +37,27 @@ export default function LatestPosts() {
           return 1;
         })
         .map((post) => (
-          <article key={post.slug} className="border-b text-lg border-border">
-            <div className="grid grid-flow-col grid-cols-[1fr_7fr_2fr] mt-4">
-              <div>{post.metadata.publishedAt}</div>
+          <article key={post.slug} className="border-b text-sm md:text-lg border-border">
+            <div className="grid grid-flow-col grid-cols-[2fr_7fr_1.5fr] md:grid-cols-[1.5fr_7fr_1.5fr] mt-4">
+              <div className="mt-1 ">{post.metadata.publishedAt}</div>
 
-              <div className={`${instrumentSerif.className} text-3xl italic`}>
+              <div className={`${title.className} w-4/5 md:text-3xl text-2xl `}>
                 {post.metadata.title}
               </div>
 
-              <div>{post.metadata.category}</div>
+              <div className="mt-1">{post.metadata.category}</div>
             </div>
 
-            <div className="grid my-3 grid-flow-col grid-cols-[1fr_7fr_2fr]">
+            <div className="grid my-3 grid-flow-col grid-cols-[2fr_7fr_1.5fr] md:grid-cols-[1.5fr_7fr_1.5fr]">
               <div className="tracking-wide">Summary:</div>
-              <div className={summary.className}>{post.metadata.summary}</div>
+              <div className= {`${summary.className}  md:w-11/12 `}>{post.metadata.summary}</div>
             </div>
 
-            <div className="grid my-3 grid-flow-col grid-cols-[1fr_7fr_2fr]">
+            <div className="grid my-3 grid-flow-col grid-cols-[2fr_7fr_1.5fr] md:grid-cols-[1.5fr_7fr_1.5fr]">
               <div>Topic:</div>
               <div className={`${topic.className} text-sm`}>
-                <div className="inline-block border px-2  ">
-                  {post.metadata.category}
+                <div className="inline-block border border-dotted rounded hover:bg-accent hover:text-accent-foreground  text-center px-2  ">
+                   <Link href={`/blog/${post.metadata.category}`}>{post.metadata.category} </Link>
                 </div>
               </div>
             </div>

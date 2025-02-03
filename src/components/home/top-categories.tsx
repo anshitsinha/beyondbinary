@@ -5,13 +5,11 @@ import { POSTS } from "@/lib/constants";
 
 export default function TopCategories() {
   return (
-    <div className="grid grid-cols-3 border ">
+    <div className="grid  grid-cols-3 my-4  ">
       {POSTS.map((post) => (
         <div
           key={post.title}
-         
-          className="hover:bg-gray-100 p-2 border transition-all"
-         
+          className="hover:bg-accent hover:text-accent-foreground p-2 border flex justify-center items-center rounded-full  transition-all"
         >
           <Link href={post.href}>{post.title}</Link>
         </div>
