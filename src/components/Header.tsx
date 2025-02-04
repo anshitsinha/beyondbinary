@@ -1,3 +1,3 @@
 export default function Header({ children }: { children: React.ReactNode }) {
-  return <div className="bg-gray-100 p-8 dark:bg-gray-800">{children}</div>;
+  return <div className="bg-secondary -mt-64  px-1 pb-[1.3rem]  pt-[17rem]">{children}</div>;
 }

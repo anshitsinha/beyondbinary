@@ -83,22 +83,22 @@ export default function Page({
             category={post.metadata.category}
             slug={post.slug}
           />
-          <h1 className="big-title text-5xl md:text-9xl tracking-tighter mt-4">
+          <h1 className="big-title  text-5xl md:text-9xl tracking-tighter mt-4">
             {post.metadata.title}
           </h1>
           <div className="flex justify-between items-center mt-2 mb-4 text-sm">
-            <p className="text-xs mt-2">
+            <p className="md:text-base text-xs mt-2">
               {formatDate(post.metadata.publishedAt)}
             </p>
           </div>
         </Container>
       </Header>
-      <Container className="grid grid-flow-col grid-cols-[2fr_5fr_2fr] gap-4">
-        <div className={`sticky ${metadata.className} mt-8 top-16 self-start`}>
+      <Container className="md:grid grid-flow-col grid-cols-[2fr_7fr] md:grid-cols-[2fr_5fr_2fr]  gap-4">
+        <div className={`md:sticky ${metadata.className} px-6 md:px-0 mt-8 top-16 self-start`}>
           <span>/ Metadata</span>
           <hr />
           {/* Hidden title that becomes visible on scroll */}
-          <h2 className="py-2  border-b border-dotted text-lg ">{post.metadata.title}</h2>
+          <h2 className="py-2  border-b border-dotted text-lg hidden md:block ">{post.metadata.title}</h2>
 
           <div className="flex flex-col">
             <div className="grid grid-cols-2 border-b border-dotted py-2">
@@ -139,7 +139,7 @@ export default function Page({
         </div>
 
         {/* Main content */}
-        <article className={`${content.className} prose text-xl ml-8`}>
+        <article className={`${content.className} prose overflow-x-hidden  text-xl md:ml-8 p-4 md:p-0`}>
           <CustomMDX source={post.content} />
         </article>
       </Container>

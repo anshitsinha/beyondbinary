@@ -17,22 +17,23 @@ export function BreadcrumbWithCustomSeparator({
   slug: string;
 }) {
   return (
-    <Breadcrumb>
+    <Breadcrumb >
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink className="text-xs md:text-base " href="/">home</BreadcrumbLink>
+         
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <Slash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink href={`/blog/${category}`}>{category}</BreadcrumbLink>
+          <BreadcrumbLink className="text-xs md:text-base " href={`/blog/${category}`}>{category}</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
           <Slash />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbPage>{slug}</BreadcrumbPage>
+          <BreadcrumbPage className="text-xs md:text-base ">{slug}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
