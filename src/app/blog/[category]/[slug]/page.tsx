@@ -94,7 +94,7 @@ export default function Page({
         </Container>
       </Header>
       <Container className="md:grid grid-flow-col grid-cols-[2fr_7fr] md:grid-cols-[2fr_5fr_2fr]  gap-4">
-        <div className={`md:sticky ${metadata.className} px-6 md:px-0 mt-8 top-16 self-start`}>
+        <div className={`md:sticky ${metadata.className} px-1 md:px-0 mt-8 top-16 self-start`}>
           <span>/ Metadata</span>
           <hr />
           {/* Hidden title that becomes visible on scroll */}
@@ -139,7 +139,7 @@ export default function Page({
         </div>
 
         {/* Main content */}
-        <article className={`${content.className} prose overflow-x-hidden  text-xl md:ml-8 p-4 md:p-0`}>
+        <article className={`${content.className} prose overflow-x-hidden  text-xl md:ml-8 px-3 md:p-0`}>
           <CustomMDX source={post.content} />
         </article>
       </Container>
