@@ -83,7 +83,7 @@ export default function Page({
             category={post.metadata.category}
             slug={post.slug}
           />
-          <h1 className="big-title text-9xl tracking-tighter mt-4">
+          <h1 className="big-title text-5xl md:text-9xl tracking-tighter mt-4">
             {post.metadata.title}
           </h1>
           <div className="flex justify-between items-center mt-2 mb-4 text-sm">

@@ -26,8 +26,8 @@ export default function Home() {
             <div className=" md:w-2/3">
               <LatestPosts />
             </div>
-            <div className="h-screen w-1/3 pl-8">
-              <div className="sticky top-8">
+            <div className="md:h-screen md:w-1/3 w-full md:pl-8 mt-12 md:mt-0">
+              <div className="md:sticky md:top-8">
                 <div
                   className={`${topic.className} flex border-b border-border`}
                 >
@@ -48,3 +48,4 @@ export default function Home() {
     </>
   );
 }
+

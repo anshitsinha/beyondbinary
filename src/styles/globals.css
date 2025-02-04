@@ -7,25 +7,25 @@
 @layer base {
   :root {
     --background: 82 13% 85%;
-  --foreground: 82 5% 0%;
-  --card: 82 13% 90%;
-  --card-foreground: 82 5% 10%;
-  --popover: 82 13% 95%;
-  --popover-foreground: 82 95% 0%;
-  --primary: 82 20% 18%;
-  --primary-foreground: 0 0% 0%;
-  --secondary: 82 13% 70%;
-  --secondary-foreground: 0 0% 0%;
-  --muted: 44 13% 85%;
-  --muted-foreground: 82 5% 35%;
-  --accent: 44 13% 80%;
-  --accent-foreground: 82 5% 10%;
-  --destructive: 0 50% 30%;
-  --destructive-foreground: 82 5% 90%;
-  --border: 82 20% 50%;
-  --input: 82 20% 18%;
-  --ring: 82 84.5% 67.1%;
-  --radius: 0rem;
+    --foreground: 82 5% 0%;
+    --card: 82 13% 90%;
+    --card-foreground: 82 5% 10%;
+    --popover:  82 13% 95%;
+    --popover-foreground: 82 95% 0%;
+    --primary: 74 100% 35%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 82 13% 70%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 44 13% 85%;
+    --muted-foreground: 82 5% 35%;
+    --accent: 44 13% 80%;
+    --accent-foreground: 82 5% 10%;
+    --destructive: 0 50% 30%;
+    --destructive-foreground: 82 5% 90%;
+    --border: 82 20% 50%;
+    --input: 82 20% 18%;
+    --ring: 82 84.5% 67.1%;
+    --radius: 0rem;
 
     /* code highlight */
     --sh-class: #2d5e9d;

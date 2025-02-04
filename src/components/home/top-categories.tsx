@@ -9,7 +9,7 @@ export default function TopCategories() {
       {POSTS.map((post) => (
         <div
           key={post.title}
-          className="hover:bg-accent hover:text-accent-foreground p-2 border flex justify-center items-center rounded-full  transition-all"
+          className="hover:bg-secondary hover:text-secondary-foreground p-2 border flex justify-center items-center rounded-full  transition-all"
         >
           <Link href={post.href}>{post.title}</Link>
         </div>
