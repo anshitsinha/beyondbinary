@@ -14,7 +14,7 @@ export default function LatestPosts() {
   return (
     <div className="w-full">
       <div
-        className={`${topic.className} grid grid-flow-col grid-cols-[2fr_7fr_1.5fr] md:grid-cols-[1.5fr_7fr_1.5fr] text-sm md:text-md border-b border-border`}
+        className={`${topic.className} grid grid-flow-col grid-cols-[2fr_7fr_1.5fr] md:grid-cols-[1.5fr_7fr_1.5fr] text-sm md:text-base border-b border-border`}
       >
         <div>
           <span className="-mr-1">/</span> Date
